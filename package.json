@@ -1,0 +1,19 @@
+{
+  "name": "nswpol-maps",
+  "version": "0.1.0",
+  "description":
+    "A collection of maps of NSW electoral boundaries in GeoJSON and TopoJSON formats",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiasziegler/nswpol-maps.git"
+  },
+  "author": "David Mallard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tobiasziegler/nswpol-maps/issues"
+  },
+  "homepage": "https://github.com/tobiasziegler/nswpol-maps#readme"
+}
