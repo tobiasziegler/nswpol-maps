@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A collection of maps of NSW electoral boundaries in GeoJSON and TopoJSON formats",
   "scripts": {
+    "download": "node download.js",
     "precommit": "pretty-quick --staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/tobiasziegler/nswpol-maps#readme",
   "devDependencies": {
     "husky": "^0.14.3",
+    "node-fetch": "^2.1.2",
     "prettier": "^1.13.4",
     "pretty-quick": "^1.6.0"
   }
