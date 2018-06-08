@@ -20,6 +20,7 @@
   "homepage": "https://github.com/tobiasziegler/nswpol-maps#readme",
   "devDependencies": {
     "husky": "^0.14.3",
+    "mapshaper": "^0.4.82",
     "node-fetch": "^2.1.2",
     "prettier": "^1.13.4",
     "pretty-quick": "^1.6.0",

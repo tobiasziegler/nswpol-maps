@@ -1,4 +1,5 @@
 const shell = require('shelljs');
+const mapshaper = require('mapshaper');
 
 // Convert MapInfo interchange file(s) into GeoJSON with WGS84 coordinate system
 const convertMapInfo = (input, output) => {
@@ -29,4 +30,17 @@ console.log('Converting NSWEC MapInfo files to GeoJSON...');
 convertMapInfo(
   'download/DeterminedBoundaries2013.MID',
   'geojson/nsw-electoral-boundaries-2013.json'
+);
+
+// Convert the GeoJSON file to TopoJSON
+console.log('Converting GeoJSON file to TopoJSON...');
+mapshaper.runCommands(
+  '-i geojson/nsw-electoral-boundaries-2013.json -o topojson/ format=topojson',
+  error => {
+    if (error) {
+      console.log(`Error: ${error.message}`);
+    } else {
+      console.log('Completed.');
+    }
+  }
 );
