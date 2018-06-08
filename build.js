@@ -21,7 +21,7 @@ const convertMapInfo = (input, output) => {
   if (shellstring.code === 0) {
     shell.echo('Completed.\n');
   } else {
-    shell.exit(shellStr.code);
+    shell.exit(shellstring.code);
   }
 };
 
