@@ -4,6 +4,7 @@
   "description": "A collection of maps of NSW electoral boundaries in GeoJSON and TopoJSON formats",
   "scripts": {
     "download": "node download.js",
+    "build": "node build.js",
     "precommit": "pretty-quick --staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +23,7 @@
     "node-fetch": "^2.1.2",
     "prettier": "^1.13.4",
     "pretty-quick": "^1.6.0",
+    "shelljs": "^0.8.2",
     "yauzl": "^2.9.2"
   }
 }
