@@ -1,7 +1,7 @@
 {
   "name": "nswpol-maps",
   "version": "0.1.0",
-  "description": "A collection of maps of NSW electoral boundaries in GeoJSON and TopoJSON formats",
+  "description": "A collection of GeoJSON and TopoJSON files representing NSW state electoral boundaries",
   "scripts": {
     "download": "node download.js",
     "build": "node build.js",
