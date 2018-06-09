@@ -25,6 +25,17 @@ const convertMapInfo = (input, output) => {
   }
 };
 
+// Run a Mapshaper command and output the result
+const runMapshaper = commands => {
+  mapshaper.runCommands(commands, error => {
+    if (error) {
+      console.log(`Error: ${error.message}`);
+    } else {
+      console.log('Completed.');
+    }
+  });
+};
+
 // Begin by converting the complete MapInfo dataset to an equivalent GeoJSON file
 console.log('Converting NSWEC MapInfo files to GeoJSON...');
 convertMapInfo(
@@ -34,13 +45,6 @@ convertMapInfo(
 
 // Convert the GeoJSON file to TopoJSON
 console.log('Converting GeoJSON file to TopoJSON...');
-mapshaper.runCommands(
-  '-i geojson/nsw-electoral-boundaries-2013.json -o topojson/ format=topojson',
-  error => {
-    if (error) {
-      console.log(`Error: ${error.message}`);
-    } else {
-      console.log('Completed.');
-    }
-  }
+runMapshaper(
+  '-i geojson/full/nsw-electoral-boundaries-2013.json -o topojson/ format=topojson'
 );
