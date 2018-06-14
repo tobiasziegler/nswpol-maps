@@ -61,14 +61,14 @@ runMapshaper(
     console.log(
       '\nCreating simplified (smaller) versions of the full TopoJSON file:'
     );
-    simplifyPercentages.map(percentage => {
-      runMapshaper(
-        `-i topojson/${baseFileName}-p100-alldistricts.json -simplify weighted percentage=${percentage}% -o topojson/${baseFileName}-p${percentage}-alldistricts.json format=topojson`,
-        `Simplify retaining ${percentage} of removable points`
-      ).catch(error => {
-        console.log(`Error: ${error.message}`);
-      });
-    });
+    return Promise.all(
+      simplifyPercentages.map(percentage =>
+        runMapshaper(
+          `-i topojson/${baseFileName}-p100-alldistricts.json -simplify weighted percentage=${percentage}% -o topojson/${baseFileName}-p${percentage}-alldistricts.json format=topojson`,
+          `Simplify retaining ${percentage} of removable points`
+        )
+      )
+    );
   })
   .catch(error => {
     console.log(`Error: ${error.message}`);
