@@ -55,15 +55,21 @@ convertMapInfo(
 runMapshaper(
   `-i geojson/${baseFileName}-p100-alldistricts.json -o topojson/ format=topojson`,
   'Converting GeoJSON file to TopoJSON'
-).then(() => {
-  // Create TopoJSON versions of the full map with different simplification levels
-  console.log(
-    '\nCreating simplified (smaller) versions of the full TopoJSON file:'
-  );
-  simplifyPercentages.map(percentage => {
-    runMapshaper(
-      `-i topojson/${baseFileName}-p100-alldistricts.json -simplify weighted percentage=${percentage}% -o topojson/${baseFileName}-p${percentage}-alldistricts.json format=topojson`,
-      `Simplify retaining ${percentage} of removable points`
+)
+  .then(() => {
+    // Create TopoJSON versions of the full map with different simplification levels
+    console.log(
+      '\nCreating simplified (smaller) versions of the full TopoJSON file:'
     );
+    simplifyPercentages.map(percentage => {
+      runMapshaper(
+        `-i topojson/${baseFileName}-p100-alldistricts.json -simplify weighted percentage=${percentage}% -o topojson/${baseFileName}-p${percentage}-alldistricts.json format=topojson`,
+        `Simplify retaining ${percentage} of removable points`
+      ).catch(error => {
+        console.log(`Error: ${error.message}`);
+      });
+    });
+  })
+  .catch(error => {
+    console.log(`Error: ${error.message}`);
   });
-});
