@@ -3,6 +3,7 @@ const mapshaper = require('mapshaper');
 
 // Define parameters for the map files that will be generated
 const baseFileName = 'nswpol-maps-2013'; // Base string for generating filenames for each map
+const simplifyPercentages = [20, 10, 5, 1]; // Percentage values to be used when simplifying maps
 
 // Convert MapInfo interchange file(s) into GeoJSON with WGS84 coordinate system
 const convertMapInfo = (input, output) => {
@@ -51,3 +52,14 @@ console.log('Converting GeoJSON file to TopoJSON...');
 runMapshaper(
   `-i geojson/${baseFileName}-p100-alldistricts.json -o topojson/ format=topojson`
 );
+
+// Create TopoJSON versions of the full map with different simplification levels
+console.log(
+  'Creating simplified (smaller) versions of the full TopoJSON file...'
+);
+simplifyPercentages.map(percentage => {
+  console.log(`Simplify retaining ${percentage} of removable points...`);
+  runMapshaper(
+    `-i topojson/${baseFileName}-p100-alldistricts.json -simplify weighted percentage=${percentage}% -o topojson/${baseFileName}-p${percentage}-alldistricts.json format=topojson`
+  );
+});
