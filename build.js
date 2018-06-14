@@ -31,12 +31,14 @@ const convertMapInfo = (input, output) => {
 
 // Run a Mapshaper command and output the result
 const runMapshaper = commands => {
-  mapshaper.runCommands(commands, error => {
-    if (error) {
-      console.log(`Error: ${error.message}`);
-    } else {
-      console.log('Completed.');
-    }
+  return new Promise((resolve, reject) => {
+    mapshaper.runCommands(commands, (error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
   });
 };
 
