@@ -1,6 +1,9 @@
 const shell = require('shelljs');
 const mapshaper = require('mapshaper');
 
+// Define parameters for the map files that will be generated
+const baseFileName = 'nswpol-maps-2013'; // Base string for generating filenames for each map
+
 // Convert MapInfo interchange file(s) into GeoJSON with WGS84 coordinate system
 const convertMapInfo = (input, output) => {
   // Check that the ogr2ogr command is available
@@ -40,11 +43,11 @@ const runMapshaper = commands => {
 console.log('Converting NSWEC MapInfo files to GeoJSON...');
 convertMapInfo(
   'download/DeterminedBoundaries2013.MID',
-  'geojson/nsw-electoral-boundaries-2013.json'
+  `geojson/${baseFileName}-p100-alldistricts.json`
 );
 
 // Convert the GeoJSON file to TopoJSON
 console.log('Converting GeoJSON file to TopoJSON...');
 runMapshaper(
-  '-i geojson/full/nsw-electoral-boundaries-2013.json -o topojson/ format=topojson'
+  `-i geojson/${baseFileName}-p100-alldistricts.json -o topojson/ format=topojson`
 );
