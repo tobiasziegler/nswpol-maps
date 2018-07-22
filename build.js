@@ -1,5 +1,6 @@
 const shell = require('shelljs');
 const mapshaper = require('mapshaper');
+const fs = require('fs');
 
 // Define parameters for the map files that will be generated
 const baseFileName = 'nswpol-maps-2013'; // Base string for generating filenames for each map
@@ -144,12 +145,12 @@ const runMapshaper = (commands, description) => {
 console.log('Converting NSWEC MapInfo files to GeoJSON...');
 convertMapInfo(
   'download/DeterminedBoundaries2013.MID',
-  `geojson/${baseFileName}-p100-alldistricts.json`
+  `download/${baseFileName}-p100-alldistricts.json`
 );
 
 // Convert the GeoJSON file to TopoJSON
 runMapshaper(
-  `-i geojson/${baseFileName}-p100-alldistricts.json -o topojson/ format=topojson`,
+  `-i download/${baseFileName}-p100-alldistricts.json -o topojson/ format=topojson`,
   'Converting GeoJSON file to TopoJSON'
 )
   .then(() => {
@@ -186,6 +187,28 @@ runMapshaper(
           )
         );
       })
+    );
+  })
+  .then(() => {
+    // Get an array of the filenames in the topojson directory
+    console.log('\nGetting list of TopoJSON files...');
+    return new Promise((resolve, reject) => {
+      fs.readdir('topojson', (error, files) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(files);
+        }
+      });
+    });
+  })
+  .then(files => {
+    console.log('Converting TopoJSON files to GeoJSON...');
+    // Convert all TopoJSON files to GeoJSON
+    return Promise.all(
+      files.map(file =>
+        runMapshaper(`-i topojson/${file} -o geojson/${file} format=geojson`)
+      )
     );
   })
   .catch(error => {
