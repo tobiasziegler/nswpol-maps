@@ -127,8 +127,8 @@ const convertMapInfo = (input, output) => {
 };
 
 // Run a Mapshaper command and output the result
-const runMapshaper = (commands, description) => {
-  return new Promise((resolve, reject) => {
+const runMapshaper = (commands, description) =>
+  new Promise((resolve, reject) => {
     if (description) console.log(`${description}...`);
     mapshaper.runCommands(commands, (error, result) => {
       if (error) {
@@ -139,7 +139,6 @@ const runMapshaper = (commands, description) => {
       }
     });
   });
-};
 
 // Begin by converting the complete MapInfo dataset to an equivalent GeoJSON file
 console.log('Converting NSWEC MapInfo files to GeoJSON...');
