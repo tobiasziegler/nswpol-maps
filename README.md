@@ -17,7 +17,7 @@ If you want to run the code to (re-)generate the map files then you'll need to h
 From a command line prompt in the project directory, you can rebuild the maps with the following steps:
 
 1.  `npm install` to install the project dependencies.
-1.  `npm run download` to download the MapInfo files from the NSWEC website.
-1.  `npm run build` to transform the original files to GeoJSON and TopoJSON.
+2.  ~~`npm run download` to download the MapInfo files from the NSWEC website.~~ _NB: The NSW Electoral Commission launched a new website in late 2018, and at this stage it doesn't appear that the map files are available for download from the new site. Until a new public link is available, the `download.js` script won't work. To build the transformed map files in the next step, you'll need to obtain a copy of the NSWEc source file (`GIS_Files.zip`) and extract its contents (`DeterminedBoundaries2013.MID` and `DeterminedBoundaries2013.mif`) into a `download` directory within this project's base directory. [Contact me](https://github.com/tobiasziegler) if you need a copy of the original file._
+3.  `npm run build` to transform the original files to GeoJSON and TopoJSON.
 
 The project uses `ogr2ogr` to convert the original MapInfo files to an equivalent GeoJSON file, and then uses [Mapshaper](https://github.com/mbloch/mapshaper) for all subsequent transformations.
