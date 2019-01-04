@@ -2,6 +2,7 @@
   "env": { "node": true },
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "rules": {
+    "no-console": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
 }
