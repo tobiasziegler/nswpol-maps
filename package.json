@@ -1,7 +1,7 @@
 {
-  "name": "nswpol-maps",
+  "name": "nswpol-maps-2013",
   "version": "0.1.0",
-  "description": "A collection of GeoJSON and TopoJSON files representing NSW state electoral boundaries",
+  "description": "A collection of GeoJSON and TopoJSON files representing NSW state electoral boundaries - 2013 redistribution edition",
   "scripts": {
     "download": "node download.js",
     "build": "node build.js",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tobiasziegler/nswpol-maps.git"
+    "url": "git+https://github.com/tobiasziegler/nswpol-maps-2013.git"
   },
   "author": "David Mallard",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tobiasziegler/nswpol-maps/issues"
+    "url": "https://github.com/tobiasziegler/nswpol-maps-2013/issues"
   },
-  "homepage": "https://github.com/tobiasziegler/nswpol-maps#readme",
+  "homepage": "https://github.com/tobiasziegler/nswpol-maps-2013#readme",
   "private": true,
   "devDependencies": {
     "eslint": "^5.11.1",

@@ -1,6 +1,8 @@
-# nswpol-maps
+# nswpol-maps-2013
 
-A collection of GeoJSON and TopoJSON files representing NSW state electoral boundaries. The files have been created by transforming the MapInfo Interchange Format (.mif/.mid) files provided by the NSW Electoral Commission. The [original data files](http://www.elections.nsw.gov.au/about_elections/electoral_boundaries/electoral_maps/gda94_geographical_midmif_files) are copyright © State of New South Wales through the Office of New South Wales Electoral Commission.
+A collection of GeoJSON and TopoJSON files representing NSW state electoral boundaries from the 2013 redistribution. These maps show the boundaries as they were at the 2015 and 2019 state elections. The files have been created by transforming the MapInfo Interchange Format (.mif/.mid) files provided by the NSW Electoral Commission.
+
+The [original data files](http://www.elections.nsw.gov.au/about_elections/electoral_boundaries/electoral_maps/gda94_geographical_midmif_files) are copyright © State of New South Wales through the Office of New South Wales Electoral Commission.
 
 ## Getting Started
 
